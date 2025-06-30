@@ -1,0 +1,426 @@
+/* Custom CSS for a Highly Professional, Interactive, and Simple About Us Page */
+
+/* استيراد خطوط عربية مميزة من جوجل فونتس */
+/* Cairo: خط عصري ونظيف ومقروء جداً، متعدد الأوزان */
+/* Almarai: خط نظيف وواضح للجسم النصي (احتياطي) */
+/* Noto Sans Arabic: خط رسمي ومقروء (احتياطي) */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Almarai:wght@300;400;700&family=Noto+Sans+Arabic:wght@400;700&display=swap');
+
+/* تعريف الألوان الخاصة بنا (لوحة ألوان راقية وهادئة) */
+:root {
+    --primary-solid: #2C3E50;       /* أزرق داكن جداً (لون أساسي قوي وراقي) */
+    --primary-light: #34495E;       /* أزرق داكن أفتح قليلاً (للتدرجات والخلفيات الداكنة) */
+    --primary-subtle: #5D799B;      /* أزرق رمادي هادئ (للنصوص الثانوية ولمسات التمييز) */
+    --accent: #E67E22;              /* برتقالي ترابي (لون ثانوي دافئ وجذاب) */
+    --accent-light: #F39C12;        /* برتقالي ذهبي أفتح (للتأكيد ولمسات الإشراق) */
+    --dark-blue: #212A3D;           /* أزرق داكن جداً (للنصوص والعناوين الرئيسية) */
+    --light-gray: #F8F9FA;          /* رمادي فاتح جداً (خلفية ناعمة) */
+    --white-smoke: #FFFFFF;         /* أبيض ناصع (للعناصر البارزة) */
+    --gray-600: #6C757D;            /* رمادي متوسط للنصوص */
+    --gray-700: #495057;            /* رمادي داكن للنصوص الرئيسية */
+
+    /* تدرجات لونية للخلفيات */
+    --gradient-hero: linear-gradient(135deg, var(--primary-solid) 0%, var(--primary-light) 100%);
+    --gradient-cta: linear-gradient(45deg, var(--accent) 0%, var(--accent-light) 100%);
+
+    /* تدرج لوني بديل للصورة في قسم "قصتنا" (أكثر نعومة) */
+    --gradient-story-visual: linear-gradient(to right top, #A8DADC, #457B9D); /* أزرق سماوي لأزرق بحري */
+}
+
+/* التنسيقات العامة للصفحة */
+body {
+    font-family: 'Cairo', sans-serif; /* خط أساسي عصري ومقروء */
+    background-color: var(--light-gray); /* خلفية عامة مريحة */
+    color: var(--gray-700); /* لون النص الافتراضي */
+    line-height: 1.7; /* مسافة بين الأسطر لتحسين القراءة */
+    overflow-x: hidden; /* لمنع ظهور شريط التمرير الأفقي بسبب الحركات */
+}
+
+/* إعادة تعريف ألوان Bootstrap Classes لتتناسب مع الباليت بتاعتنا */
+.text-primary-subtle { color: var(--primary-subtle) !important; }
+.text-accent { color: var(--accent) !important; }
+/* تم تغيير لون الكلمة "المرح" هنا إلى الأبيض الناصع */
+.text-accent-light { color: var(--white-smoke) !important; } 
+.text-dark-blue { color: var(--dark-blue) !important; }
+.text-gray-600 { color: var(--gray-600) !important; }
+.text-gray-700 { color: var(--gray-700) !important; }
+.text-white-75 { color: rgba(255, 255, 255, 0.85) !important; } /* شفافية للنص الأبيض */
+
+
+/* تنسيقات الأزرار */
+.btn {
+    font-weight: 600; /* وزن خط متوسط */
+    padding: 0.9rem 2.8rem; /* مسافة داخلية أكبر قليلاً */
+    border-radius: 50px !important; /* أزرار دائرية تماماً */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* حركة أكثر سلاسة */
+    border: none; /* إزالة الحدود الافتراضية */
+    text-transform: capitalize; /* أول حرف كابيتال */
+}
+
+.btn-primary-solid {
+    background-color: var(--primary-solid);
+    color: var(--white-smoke);
+    box-shadow: 0 8px 20px rgba(44, 62, 80, 0.2); /* ظل مميز */
+}
+.btn-primary-solid:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-4px); /* رفع أعلى عند الهوفر */
+    box-shadow: 0 12px 25px rgba(44, 62, 80, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--white-smoke);
+    border: 2px solid var(--white-smoke); /* حدود بيضاء واضحة */
+    background-color: transparent;
+    box-shadow: none;
+}
+.btn-outline-primary:hover {
+    background-color: var(--white-smoke);
+    color: var(--primary-solid) !important; /* يتغير للون الأساسي عند الهوفر */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+.btn-accent-solid { /* زر بلون مميز لجذب الانتباه (في قسم الـ CTA) */
+    background: var(--gradient-cta); /* تدرج لوني قوي */
+    color: var(--white-smoke);
+    box-shadow: 0 10px 25px rgba(230, 126, 34, 0.3);
+    font-weight: 700; /* خط أسمك */
+}
+.btn-accent-solid:hover {
+    background: linear-gradient(45deg, var(--accent-light) 0%, var(--accent) 100%); /* تدرج أفتح عند الهوفر */
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(230, 126, 34, 0.4);
+}
+
+/* تأثير بسيط للزر في الهيرو (نبض خفيف) */
+.animate-pulse-subtle {
+    animation: pulseSubtle 2s infinite ease-in-out;
+}
+@keyframes pulseSubtle {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-3px) scale(1.01); }
+}
+/* تأثير نبض وتكبير لزر الـ CTA */
+.animate-scale-pulse {
+    animation: scalePulse 2.5s infinite ease-in-out;
+}
+@keyframes scalePulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 10px 25px rgba(230, 126, 34, 0.3); }
+    50% { transform: scale(1.02); box-shadow: 0 15px 35px rgba(230, 126, 34, 0.5); }
+}
+
+
+/* Hero Section - قسم علوي بتصميم راقي وجذاب */
+.hero-section {
+    min-height: 100vh;
+    background: var(--gradient-hero); /* تدرج لوني للخلفية */
+    position: relative;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* مهم جداً عشان الأنماط الخلفية */
+}
+.hero-section h1 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 5.5rem; /* حجم أكبر جداً للعنوان */
+    font-weight: 800; /* أثقل وزن خط */
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    line-height: 1.1;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero-section p {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    max-width: 900px;
+    color: var(--white-75);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+/* نمط خلفي في الهيرو (أشكال هندسية شفافة) */
+.hero-bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.05) 50%, transparent 50%, transparent 100%),
+                      radial-gradient(circle at 90% 80%, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.05) 50%, transparent 50%, transparent 100%);
+    background-size: 80px 80px, 120px 120px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+
+/* About Story Section - قسم المحتوى الرئيسي */
+.bg-light-gray {
+    background-color: var(--light-gray) !important; /* استخدام رمادي فاتح جداً */
+}
+
+h2.display-5 {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    color: var(--dark-blue);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.text-primary-subtle {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--primary-subtle) !important;
+}
+
+.story-visual-placeholder {
+    width: 100%;
+    /* نسبة أبعاد الفيديو 16:9 */
+    padding-bottom: 56.25%;
+    background: var(--gradient-story-visual); /* تدرج لوني ناعم كبديل للفيديو/الصورة */
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* حركة أكثر سلاسة */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* ظل أعمق */
+    border: 2px solid rgba(255,255,255,0.3); /* حدود شفافة خفيفة */
+}
+.story-visual-placeholder:hover {
+    transform: translateY(-5px) scale(1.005); /* رفع بسيط وتكبير طفيف */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* أيقونة تشغيل SVG مخصصة (تحسين كبير على الأيقونة القديمة) */
+.play-icon-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 80px; /* حجم أكبر للأيقونة */
+    height: 80px;
+    color: var(--white-smoke); /* لون الأيقونة أبيض ناصع */
+    opacity: 0.9;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); /* ظل للأيقونة نفسها */
+}
+.story-visual-placeholder:hover .play-icon-svg {
+    transform: translate(-50%, -50%) scale(1.1); /* تكبير الأيقونة عند الهوفر */
+    opacity: 1;
+    color: var(--accent-light); /* تغيير لون الأيقونة عند الهوفر لمسة جمالية */
+}
+
+
+/* Values Section - قسم يعرض قيم المتجر */
+.values-section {
+    background-color: var(--white-smoke); /* خلفية بيضاء ناصعة */
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.value-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 25px; /* مسافة داخلية أكبر */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07); /* ظل أكثر وضوحا */
+    border-top: 5px solid transparent; /* حدود علوية شفافة في البداية */
+}
+.value-card:hover {
+    transform: translateY(-8px); /* رفع أقل قليلاً */
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent); /* تتغير الحدود العلوية للون البرتقالي عند الهوفر */
+}
+
+.value-icon {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    background-color: var(--primary-subtle); /* خلفية للأيقونة بلون هادئ */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+.value-icon i {
+    color: var(--white-smoke); /* لون الأيقونة أبيض */
+    font-size: 3.8rem !important; /* حجم الأيقونة أكبر */
+}
+.value-card:hover .value-icon {
+    background-color: var(--accent); /* تتغير خلفية الأيقونة للون البرتقالي عند الهوفر */
+}
+
+/* نمط زخرفي داخل البطاقات (نقاط شفافة) */
+.card-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#eee 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+.value-card:hover .card-pattern {
+    background-image: radial-gradient(var(--accent-light) 1px, transparent 1px); /* يتغير لون النمط عند الهوفر */
+    opacity: 0.1;
+}
+
+
+/* Call to Action Section - دعوة للعمل بتصميم مميز */
+.cta-section {
+    background: var(--gradient-cta); /* تدرج لوني قوي */
+    color: #fff;
+    border-radius: 20px; /* حواف مدورة أقل حدة */
+    margin: 8rem auto; /* مسافات علوية وسفلية تلقائية */
+    padding: 6rem 2rem;
+    max-width: 1100px; /* تحديد أقصى عرض للقسم */
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+.cta-section h3 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.cta-section p {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.3rem;
+    max-width: 750px;
+}
+/* نمط خلفي في الـ CTA (خطوط قطرية شفافة) */
+.cta-bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%, rgba(255,255,255,0.05) 100%),
+                      linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%, rgba(255,255,255,0.05) 100%);
+    background-size: 60px 60px;
+    opacity: 0.6;
+    z-index: 0;
+}
+
+
+/* الفوتر (Footer) */
+footer {
+    background-color: var(--dark-blue) !important; /* لون داكن جداً للفوتر */
+    color: var(--white-smoke) !important;
+    padding: 35px 0; /* مسافة داخلية أكبر */
+}
+.social-icons a {
+    color: var(--white-smoke) !important;
+    margin: 0 12px; /* مسافة أكبر بين الأيقونات */
+    font-size: 1.6rem; /* حجم أكبر للأيقونات */
+    transition: all 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--accent-light) !important; /* تتغير للون البرتقالي الفاتح عند الهوفر */
+    transform: translateY(-4px) scale(1.1);
+}
+
+
+/* التعديلات الخاصة بالشاشات الصغيرة (Responsive Design) */
+@media (max-width: 1200px) {
+    .hero-section h1 {
+        font-size: 4.5rem;
+    }
+    .hero-section p {
+        font-size: 1.5rem;
+    }
+    .cta-section h3 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .hero-section {
+        min-height: 80vh;
+        padding: 80px 0;
+    }
+    .hero-section h1 {
+        font-size: 3.5rem;
+    }
+    .hero-section p {
+        font-size: 1.3rem;
+    }
+    /* ترتيب العناصر في قسم "قصتنا" (الفيديو/الشكل يظهر أولاً ثم النص) */
+    .col-lg-6 {
+        order: unset !important;
+        margin-bottom: 3rem;
+    }
+    .col-lg-6:last-child {
+        margin-bottom: 0;
+    }
+    h2.display-5 {
+        font-size: 2.8rem;
+    }
+    .story-visual-placeholder {
+        padding-bottom: 65%;
+    }
+    .play-icon-svg {
+        width: 70px;
+        height: 70px;
+    }
+    .value-card {
+        margin-bottom: 2rem;
+        padding: 30px 20px;
+    }
+    .value-icon i {
+        font-size: 3.2rem !important;
+    }
+    .cta-section {
+        margin: 6rem auto;
+        padding: 4.5rem 1.5rem;
+    }
+    .cta-section h3 {
+        font-size: 3rem;
+    }
+    .cta-section p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    h2.display-5 {
+        font-size: 2.2rem;
+    }
+    .play-icon-svg {
+        width: 60px;
+        height: 60px;
+    }
+    .cta-section h3 {
+        font-size: 2.5rem;
+    }
+    .cta-section p {
+        font-size: 1rem;
+    }
+    .social-icons a {
+        font-size: 1.4rem;
+        margin: 0 8px;
+    }
+}
